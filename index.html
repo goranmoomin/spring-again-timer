@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>내이름 입대까지 남은 시간</title>
+        <style>
+            #timer {
+                text-align: center;
+                height: 100vh;
+                line-height: 100vh;
+                margin: auto;
+                font-family: sans-serif;
+            }
+
+            @media (min-width: 500px) {
+                #timer {
+                    font-size: 30px;
+                }
+            }
+
+            @media (min-width: 800px) {
+                #timer {
+                    font-size: 48px;
+                }
+            }
+
+            @media (min-width: 1200px) {
+                #timer {
+                    font-size: 60px;
+                }
+            }
+        </style>
+        <script>
+            window.addEventListener("load", () => {
+                timerEl = document.getElementById("timer");
+                let joinDate = new Date("Sun May 17 2021 14:00:00 GMT+0900 (KST)");
+                let zeroPad = (num, places) => String(num).padStart(places, '0')
+                console.log(joinDate);
+                console.log(new Date());
+                let interval = setInterval(() => {
+                    let currentDate = new Date();
+                    let difference = joinDate - currentDate;
+                    if (difference <= 0) {
+                        timerEl.innerText = "아아... 그는 갔습니다...";
+                        clearInterval(interval);
+                    } else {
+                        let days = Math.floor(difference / (24 * 60 * 60 * 1000));
+                        difference -= days * 24 * 60 * 60 * 1000;
+                        let hours = Math.floor(difference / (60 * 60 * 1000));
+                        difference -= hours * 60 * 60 * 1000;
+                        let minutes = Math.floor(difference / (60 * 1000));
+                        difference -= minutes * 60 * 1000;
+                        let seconds = Math.floor(difference / 1000);
+                        difference -= seconds * 1000;
+                        let milliseconds = difference
+                        timerEl.innerText = `입대까지 ${zeroPad(days, 1)}일 ${zeroPad(hours, 2)}시간 ${zeroPad(minutes, 2)}분 ${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}초`;
+                    }
+                }, 1);
+            });
+        </script>
+    </head>
+    <body>
+        <div id="timer"></div>
+    </body>
+</html>
