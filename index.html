@@ -36,8 +36,6 @@
                 timerEl = document.getElementById("timer");
                 let joinDate = new Date("Sun May 17 2021 14:00:00 GMT+0900 (KST)");
                 let zeroPad = (num, places) => String(num).padStart(places, '0')
-                console.log(joinDate);
-                console.log(new Date());
                 let interval = setInterval(() => {
                     let currentDate = new Date();
                     let difference = joinDate - currentDate;
