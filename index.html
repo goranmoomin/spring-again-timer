@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>내이름 입대까지 남은 시간</title>
+        <title>또봄님 탈출까지 남은 시간</title>
         <style>
             body {
                 margin: 0;
@@ -39,14 +39,11 @@
         </style>
         <script>
             window.addEventListener("load", () => {
-                let armyTimerEl = document.getElementById("armytimer");
-                let comebackTimerEl = document.getElementById("comebacktimer");
-                let joinDate = new Date("Sun May 17 2021 14:00:00 GMT+0900 (KST)");
-                let comebackDate = new Date("Sun May 17 2021 18:00:00 GMT+0900 (KST)");
+                let timerEl = document.getElementById("freetimer");
+                let date = new Date("Wed July 14 2021 20:00:00 GMT+0900 (KST)");
                 let interval = setInterval(() => {
                     let currentDate = new Date();
-                    let joinDifference = joinDate - currentDate;
-                    let comebackDifference = comebackDate - currentDate;
+                    let difference = date - currentDate;
                     let differenceToString = difference => {
                         let zeroPad = (num, places) => String(num).padStart(places, '0')
                         let days = Math.floor(difference / (24 * 60 * 60 * 1000));
@@ -60,17 +57,12 @@
                         let milliseconds = difference;
                         return `${zeroPad(days, 1)}일 ${zeroPad(hours, 2)}시간 ${zeroPad(minutes, 2)}분 ${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}초`;
                     };
-                    if (joinDifference <= 0) {
-                        armyTimerEl.innerText = "아아... 그는 갔습니다...";
+                    if (difference <= 0) {
+                        timerEl.innerText = "도비 is free!";
                     } else {
-                        armyTimerEl.innerText = `입대까지 ${differenceToString(joinDifference)}`;
+                        timerEl.innerText = `탈출까지 ${differenceToString(difference)}`;
                     }
-                    if (comebackDifference <= 0) {
-                        comebackTimerEl.innerText = "빨리 스밍 ㄱㄱ";
-                    } else {
-                        comebackTimerEl.innerText = `컴백까지 ${differenceToString(comebackDifference)}`;
-                    }
-                    if (joinDifference <= 0 && comebackDifference <= 0) {
+                    if (difference <= 0) {
                         clearInterval(interval);
                     }
                 }, 1);
@@ -79,8 +71,7 @@
     </head>
     <body>
         <div class="timercontainer">
-            <div id="armytimer" class="timer"></div>
-            <div id="comebacktimer" class="timer"></div>
+            <div id="freetimer" class="timer"></div>
         </div>
     </body>
 </html>
