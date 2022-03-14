@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>또봄님 탈출까지 남은 시간</title>
+        <title>또봄님 감금까지 남은 시간</title>
         <style>
             body {
                 margin: 0;
@@ -39,8 +39,8 @@
         </style>
         <script>
             window.addEventListener("load", () => {
-                let timerEl = document.getElementById("freetimer");
-                let date = new Date("Wed July 14 2021 08:00:00 GMT+0900 (KST)");
+                let timerEl = document.getElementById("armytimer");
+                let date = new Date("Wed Mar 21 2022 14:00:00 GMT+0900 (KST)");
                 let interval = setInterval(() => {
                     let currentDate = new Date();
                     let difference = date - currentDate;
@@ -58,9 +58,9 @@
                         return `${zeroPad(days, 1)}일 ${zeroPad(hours, 2)}시간 ${zeroPad(minutes, 2)}분 ${zeroPad(seconds, 2)}.${zeroPad(milliseconds, 3)}초`;
                     };
                     if (difference <= 0) {
-                        timerEl.innerText = "도비 is free!";
+                        timerEl.innerText = "아아… 그는 갔습니다…";
                     } else {
-                        timerEl.innerText = `탈출까지 ${differenceToString(difference)}`;
+                        timerEl.innerText = `감금까지 ${differenceToString(difference)}`;
                     }
                     if (difference <= 0) {
                         clearInterval(interval);
@@ -71,7 +71,7 @@
     </head>
     <body>
         <div class="timercontainer">
-            <div id="freetimer" class="timer"></div>
+            <div id="armytimer" class="timer"></div>
         </div>
     </body>
 </html>
